@@ -2,52 +2,237 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px;
+  background-color: var(--card-bg);
+  border-radius: 15px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 0 15px rgba(157, 106, 255, 0.1);
 }
+
+.home > div:first-child {
+  font-family: 'Russo One', sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  background: linear-gradient(to right, var(--neon-purple), var(--neon-blue));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: var(--text-shadow);
+  letter-spacing: 2px;
+}
+
+.create_form {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
 .create_form input {
-  width: 300px;
-  padding: 10px;
-  border-bottom: 2px solid;
-  outline: none;
+  flex: 1;
+  width: 100%;
+  padding: 12px 15px;
+  background-color: rgba(25, 22, 39, 0.8);
+  border: 1px solid var(--border-color);
   border-radius: 12px;
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
 }
+
+.create_form input:focus {
+  outline: none;
+  border-color: var(--neon-purple);
+  box-shadow: 0 0 10px rgba(157, 106, 255, 0.3);
+}
+
 .create_form button {
-  padding: 10px;
-  background-color: black;
+  padding: 12px 20px;
+  background: linear-gradient(90deg, var(--neon-bright-purple), var(--neon-blue));
   color: white;
   cursor: pointer;
+  border: none;
   border-radius: 12px;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 15px var(--neon-purple);
+  text-shadow: 0 0 5px white;
+  letter-spacing: 1px;
+}
+
+.create_form button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px var(--neon-bright-purple);
+  animation: pulse 1.5s infinite;
+}
+
+.create_form button:active {
+  transform: translateY(0);
+}
+
+.create_form button::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: rotate(45deg);
+  animation: shine 3s infinite;
+  pointer-events: none;
+}
+
+.create_form button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 12px;
+  box-shadow: 0 0 10px var(--neon-bright-purple), 0 0 20px var(--neon-purple);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.create_form button:hover::after {
+  opacity: 1;
+}
+
+@keyframes shine {
+  0% {
+    left: -100%;
+    top: -100%;
+  }
+  20% {
+    left: 100%;
+    top: 100%;
+  }
+  100% {
+    left: 100%;
+    top: 100%;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 10px var(--neon-bright-purple);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--neon-bright-purple), 0 0 30px var(--neon-purple);
+  }
+  100% {
+    box-shadow: 0 0 10px var(--neon-bright-purple);
+  }
 }
 
 .task {
   display: flex;
   align-items: center;
-  width: 345px;
+  width: 100%;
   justify-content: space-between;
-  background-color: black;
+  background-color: rgba(25, 22, 39, 0.8);
+  border: 1px solid var(--border-color);
   color: white;
-  height: 35px;
-  padding: 2px 5px 2px 5px;
-  margin-top: 2px;
+  padding: 12px 15px;
+  margin-bottom: 10px;
   border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.task:hover {
+  border-color: var(--neon-purple);
+  box-shadow: 0 0 10px rgba(157, 106, 255, 0.2);
 }
 
 .checkbox {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .line_through {
   text-decoration: line-through;
+  opacity: 0.6;
+  color: var(--neon-blue);
 }
+
 .checkbox .icon {
-  margin-right: 5px;
-  font-size: 15px;
+  margin-right: 10px;
+  font-size: 18px;
+  color: var(--neon-purple);
+  transition: all 0.2s ease;
+}
+
+.checkbox:hover .icon {
+  transform: scale(1.2);
+}
+
+.task p {
+  font-size: 1rem;
 }
 
 .task div span {
-  margin: 0px 5px 0px 4px;
+  margin: 0px 5px;
+  display: flex;
+  align-items: center;
 }
 
 .task div .icon {
   cursor: pointer;
+  color: white;
+  font-size: 18px;
+  transition: all 0.2s ease;
+}
+
+.task div .icon:hover {
+  color: var(--neon-bright-purple);
+  transform: scale(1.2);
+}
+
+/* Empty state styling */
+.home > div > h1 {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 1.2rem;
+  font-weight: normal;
+  margin: 30px 0;
+  text-align: center;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--card-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--neon-purple);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-bright-purple);
+}
+
+/* Animation for new tasks */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.task {
+  animation: fadeIn 0.3s ease-out;
 }
