@@ -18,6 +18,7 @@ function Create({ onTaskAdded }) {
     <div className="create_form">
       <input
         type="text"
+        placeholder="Add new task..."
         value={task}
         onChange={(e) => setTask(e.target.value)}
       />

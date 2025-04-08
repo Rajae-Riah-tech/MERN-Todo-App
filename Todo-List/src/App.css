@@ -1,3 +1,4 @@
+
 .home {
   display: flex;
   flex-direction: column;
@@ -48,7 +49,7 @@
 
 .create_form button {
   padding: 12px 20px;
-  background: linear-gradient(90deg, var(--neon-bright-purple), var(--neon-blue));
+  background: var(--neon-bright-purple);
   color: white;
   cursor: pointer;
   border: none;
